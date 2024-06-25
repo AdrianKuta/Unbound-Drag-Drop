@@ -47,5 +47,9 @@ gradlePlugin {
             id = "convention.compose"
             implementationClass = "ComposeConventionPlugin"
         }
+        register("convetionLibraryPublish") {
+            id = "convention.android.library.publish"
+            implementationClass = "AndroidLibraryPublishConventionPlugin"
+        }
     }
 }

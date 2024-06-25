@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Unbound Drag & Drop"
 include(":app")
+include(":dragdrop")
