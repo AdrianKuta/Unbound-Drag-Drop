@@ -3,6 +3,8 @@
 [![Maven Central Version](https://img.shields.io/maven-central/v/dev.adriankuta/unbound-drag-drop?style=plastic)](https://central.sonatype.com/artifact/dev.adriankuta/unbound-drag-drop)
 [![License: MIT](https://img.shields.io/github/license/AdrianKuta/Unbound-Drag-Drop?style=plastic)](https://github.com/AdrianKuta/Unbound-Drag-Drop/blob/master/LICENSE)
 
+[Unbound Drag & Drop.webm](https://github.com/AdrianKuta/Unbound-Drag-Drop/assets/46381935/73cc7ac8-aaf0-4dd7-b506-0745b1122222)
+
 Unbound Drag & Drop is a versatile and user-friendly feature designed to enhance your Android
 applications by enabling drag and drop functionality across multiple RecyclerViews. Unlike the
 default behavior, which restricts drag and drop actions within a single RecyclerView, Unbound Drag &
@@ -70,6 +72,7 @@ dragDropHelper.attachToRecyclerView(recyclerView)
 ```
 
 ---
+
 See example in `app` module.
 
 ## License
