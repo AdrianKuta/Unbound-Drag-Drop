@@ -37,6 +37,7 @@ class SimpleGridPageAdapter :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val data = asyncListDiffer.currentList[position]
+        viewHolder.itemView.isLongClickable = true
         viewHolder.bind(data)
     }
 
@@ -46,7 +47,6 @@ class SimpleGridPageAdapter :
 
         fun bind(task: Task) {
             binding.textView.text = task.title
-            binding.root.isLongClickable = true
         }
     }
 

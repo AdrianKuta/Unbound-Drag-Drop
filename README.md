@@ -61,7 +61,7 @@ class MyDragDropCallback : DragDropHelper.Callback() {
 }
 ```
 
-#### Step2: Attach `DragDropHelper` to `RecyclerView`
+#### Step 2: Attach `DragDropHelper` to `RecyclerView`
 
 In your Activity or Fragment, attach DragDropHelper to your RecyclerView.
 
@@ -69,6 +69,16 @@ In your Activity or Fragment, attach DragDropHelper to your RecyclerView.
 val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
 val dragDropHelper = DragDropHelper(MyDragDropCallback())
 dragDropHelper.attachToRecyclerView(recyclerView)
+```
+
+#
+### Step 3: Enable long click
+
+Dragging is enabled only for views with long click enabled. To allow dragging and dropping of RecyclerView items, you need to set isLongClickable to true for each RecyclerView item.
+
+```kotlin
+viewHolder.itemView.isLongClickable = true
+
 ```
 
 ---
