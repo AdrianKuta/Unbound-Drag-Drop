@@ -74,7 +74,7 @@ dragDropHelper.attachToRecyclerView(recyclerView)
 #
 ### Step 3: Enable long click
 
-Dragging is enabled only for views with long click enabled. To allow dragging and dropping of RecyclerView items, you need to set isLongClickable to true for each RecyclerView item.
+Dragging is enabled only for views with long click enabled. To allow dragging and dropping of `RecyclerView` items, you need to set `isLongClickable` to `true` for each RecyclerView item.
 
 ```kotlin
 viewHolder.itemView.isLongClickable = true
