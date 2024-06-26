@@ -1,20 +1,28 @@
 # Unbound Drag & Drop
+
 [![Maven Central Version](https://img.shields.io/maven-central/v/dev.adriankuta/unbound-drag-drop?style=plastic)](https://central.sonatype.com/artifact/dev.adriankuta/unbound-drag-drop)
 [![License: MIT](https://img.shields.io/github/license/AdrianKuta/Unbound-Drag-Drop?style=plastic)](https://github.com/AdrianKuta/Unbound-Drag-Drop/blob/master/LICENSE)
 
-
-Unbound Drag & Drop is a versatile and user-friendly feature designed to enhance your Android applications by enabling drag and drop functionality across multiple RecyclerViews. Unlike the default behavior, which restricts drag and drop actions within a single RecyclerView, Unbound Drag & Drop allows users to seamlessly move items between different RecyclerViews, providing a more flexible and intuitive user experience.
+Unbound Drag & Drop is a versatile and user-friendly feature designed to enhance your Android
+applications by enabling drag and drop functionality across multiple RecyclerViews. Unlike the
+default behavior, which restricts drag and drop actions within a single RecyclerView, Unbound Drag &
+Drop allows users to seamlessly move items between different RecyclerViews, providing a more
+flexible and intuitive user experience.
 
 ## Features
 
 - **Multi-RecyclerView Drag and Drop**: Easily drag and drop items between multiple RecyclerViews.
-- **Customizable and Extensible**: Adapt the feature to fit your specific needs with customizable options and extensible components.
-- **Smooth and Intuitive User Experience**: Enhance the interactivity of your app with a user-friendly drag and drop interface.
-- **Easy Integration**: Quickly integrate Unbound Drag & Drop into your existing Android projects with minimal setup.
+- **Customizable and Extensible**: Adapt the feature to fit your specific needs with customizable
+  options and extensible components.
+- **Smooth and Intuitive User Experience**: Enhance the interactivity of your app with a
+  user-friendly drag and drop interface.
+- **Easy Integration**: Quickly integrate Unbound Drag & Drop into your existing Android projects
+  with minimal setup.
 
 ## Installation
 
-To include Unbound Drag & Drop in your project, add the following dependency to your build.gradle file:
+To include Unbound Drag & Drop in your project, add the following dependency to your build.gradle
+file:
 
 ```kotlin
 implementation("dev.adriankuta:unbound-drag-drop:0.0.2")
@@ -55,14 +63,19 @@ class MyDragDropCallback : DragDropHelper.Callback() {
 
 In your Activity or Fragment, attach DragDropHelper to your RecyclerView.
 
-```
+```kotlin
 val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
 val dragDropHelper = DragDropHelper(MyDragDropCallback())
 dragDropHelper.attachToRecyclerView(recyclerView)
 ```
 
+---
+See example in `app` module.
+
 ## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
+
 Contributions are welcome! Please submit a pull request or open an issue to discuss any changes.
