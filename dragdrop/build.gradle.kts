@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "dev.adriankuta.unbounddragdrop"
-    version = "0.0.3"
+    version = "0.0.4"
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
@@ -15,7 +15,7 @@ android {
 
     mavenPublishing {
         coordinates("dev.adriankuta", "unbound-drag-drop", version.toString())
-        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
         signAllPublications()
         pom {
             name = "Unbound Drag & Drop"
