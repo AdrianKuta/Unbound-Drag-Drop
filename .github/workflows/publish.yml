@@ -20,6 +20,11 @@ jobs:
         with:
           distribution: adopt
           java-version: 17
+
+      - name: LS Command
+        run: |
+          echo $ANDROID_HOME
+          ls $ANDROID_HOME
       - name: Setup Android SDK
         uses: amyu/setup-android@v4
 
