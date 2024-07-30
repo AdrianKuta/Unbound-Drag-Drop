@@ -6,15 +6,15 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.DRAG_FLAG_OPAQUE
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+
 /**
- * Helper class to handle drag and drop functionality in a RecyclerView.
+ * Helper class to handle drag and drop functionality in multiple RecyclerViews.
  *
  * @param callback A Callback object to handle the drag and drop events.
  */
-class DragDropHelper(callback: Callback) :
-    RecyclerView.OnChildAttachStateChangeListener {
-    private var mRecyclerView: RecyclerView? = null
-    private var recyclerItemClickListener: RecyclerItemClickListener? = null
+class DragDropHelper(private val callback: Callback) : RecyclerView.OnChildAttachStateChangeListener {
+    private val recyclerViews = mutableListOf<RecyclerView>()
+    private val recyclerItemClickListeners = mutableMapOf<RecyclerView, RecyclerItemClickListener>()
     private val dropListener = DropListener(callback)
     private val onItemLongClickListener: RecyclerItemClickListener.OnItemLongClickListener by lazy {
         object : RecyclerItemClickListener.OnItemLongClickListener {
@@ -39,30 +39,42 @@ class DragDropHelper(callback: Callback) :
      * @param recyclerView The RecyclerView to attach to.
      */
     fun attachToRecyclerView(recyclerView: RecyclerView?) {
-        if (mRecyclerView === recyclerView) {
-            return  // nothing to do
+        recyclerView?.let {
+            if (recyclerViews.contains(it)) return  // already attached
+
+            recyclerViews.add(it)
+            setupCallbacks(it)
         }
-        if (mRecyclerView != null) {
-            destroyCallbacks()
-        }
-        mRecyclerView = recyclerView
-        mRecyclerView?.let {
-            setupCallbacks()
+    }
+
+    /**
+     * Detaches the DragDropHelper from the specified RecyclerView.
+     *
+     * @param recyclerView The RecyclerView to detach from.
+     */
+    fun detachFromRecyclerView(recyclerView: RecyclerView?) {
+        recyclerView?.let {
+            if (!recyclerViews.contains(it)) return  // not attached
+
+            destroyCallbacks(it)
+            recyclerViews.remove(it)
         }
     }
 
     /**
      * Sets up the necessary callbacks for the RecyclerView.
+     *
+     * @param recyclerView The RecyclerView to setup callbacks for.
      */
-    private fun setupCallbacks() {
-        mRecyclerView?.apply {
-            recyclerItemClickListener = RecyclerItemClickListener(
+    private fun setupCallbacks(recyclerView: RecyclerView) {
+        recyclerView.apply {
+            val clickListener = RecyclerItemClickListener(
                 context,
                 this,
                 onItemLongClickListener
-            ).also {
-                mRecyclerView?.addOnItemTouchListener(it)
-            }
+            )
+            recyclerItemClickListeners[this] = clickListener
+            addOnItemTouchListener(clickListener)
             addOnChildAttachStateChangeListener(this@DragDropHelper)
             setOnDragListener(dropListener)
         }
@@ -70,13 +82,16 @@ class DragDropHelper(callback: Callback) :
 
     /**
      * Removes the callbacks from the RecyclerView.
+     *
+     * @param recyclerView The RecyclerView to remove callbacks from.
      */
-    private fun destroyCallbacks() {
-        recyclerItemClickListener?.let {
-            mRecyclerView?.removeOnItemTouchListener(it)
+    private fun destroyCallbacks(recyclerView: RecyclerView) {
+        recyclerItemClickListeners[recyclerView]?.let {
+            recyclerView.removeOnItemTouchListener(it)
+            recyclerItemClickListeners.remove(recyclerView)
         }
-        mRecyclerView?.removeOnChildAttachStateChangeListener(this)
-        mRecyclerView?.setOnDragListener(null)
+        recyclerView.removeOnChildAttachStateChangeListener(this)
+        recyclerView.setOnDragListener(null)
     }
 
     /**
