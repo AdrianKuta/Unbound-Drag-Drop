@@ -1,19 +1,19 @@
 [versions]
 androidGradlePlugin = "8.1.4"
-agp = "8.5.0"
-kotlin = "1.9.0"
+agp = "8.5.1"
+kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
 appcompat = "1.7.0"
 kotlinxCoroutinesAndroid = "1.7.3"
-lifecycleViewmodelKtx = "2.8.2"
+lifecycleViewmodelKtx = "2.8.4"
 material = "1.12.0"
-activity = "1.9.0"
+activity = "1.9.1"
 constraintlayout = "2.1.4"
 timber = "5.0.1"
-unboundDragDrop = "0.0.1"
+unboundDragDrop = "0.1.0"
 
 [libraries]
 android-tools-build-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }

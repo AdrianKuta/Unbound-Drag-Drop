@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "dev.adriankuta.unbounddragdrop"
-    version = "0.0.4"
+    version = "0.1.0"
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
