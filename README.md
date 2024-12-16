@@ -27,7 +27,7 @@ To include Unbound Drag & Drop in your project, add the following dependency to 
 file:
 
 ```kotlin
-implementation("dev.adriankuta:unbound-drag-drop:0.0.2")
+implementation("dev.adriankuta:unbound-drag-drop:0.1.0")
 ```
 
 ## Usage
